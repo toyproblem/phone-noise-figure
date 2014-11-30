@@ -1,0 +1,119 @@
+<div class="text">
+
+  <h2>Mobile phone noise figure</h2>
+
+  <div class="left_col">
+
+    Before your phone (or mobile device) is anything else, it is a
+    radio. Perhaps the most important parameter of a radio recevier is
+    its [https://en.wikipedia.org/wiki/Noise_figure noise figure]. A
+    low noise figure means less noise, and (roughly speaking) more
+    bandwdith.
+
+  </div>
+
+  <div class="right_col">
+
+    Below we show how the noise figure of various subsystems (blocks)
+    can be combined to form an overall noise figure, and what that
+    means in practice. A simple problem, but one considered routinely
+    by the [https://en.wikipedia.org/wiki/Radio-frequency_engineering
+    RF] engineers that designed your phone.
+ 
+  </div>
+
+  <div class="clear"></div>
+
+  <figure align="center">
+    <img id="front-end" class="system">
+  </figure>
+
+  <div class="left_col">
+
+    The figure shows a simplified
+    [https://en.wikipedia.org/wiki/RF_front_end RF front end] of a
+    mobile phone, comprising several blocks:
+    <ul>
+      <li>DUP: [https://en.wikipedia.org/wiki/Duplexer duplexer]</li>
+      <li>LNA: [https://en.wikipedia.org/wiki/Low-noise_amplifier
+      low-noise amplifier] </li>
+      <li>ETC: Everthing else.</li>
+    </ul>
+  </div>
+
+  <div class="right_col">
+
+    Each block has a gain and a noise figure. The question is, given
+    the specifications for each block, what is the overall noise
+    figure for the receiver?
+
+    The code below calls a function to repeatedly apply
+    [https://en.wikipedia.org/wiki/Friis_formulas_for_noise, Friis
+    formula] for two blocks. The function itself appears at the end.
+ 
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="left_col">
+    <div data-file="main.coffee"></div>
+  </div>    
+
+  <div class="right_col">
+    <div data-eval="main.coffee"></div>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="left_col">
+
+    The output array is the <i>cumulative</i> noise figure looking
+    into each block&mdash; so the total noise figure for the system
+    (often called the "input referred" noise figure) is about 3.4 dB.
+
+    We can learn quite a lot about RF design just by playing with the
+    values above. Although very simple, the following observations
+    dominate the RF design of mobile phones.
+
+  </div>
+
+  <div class="right_col">
+
+    <ul>
+      <li>The total NF is very sensitive to loss before the LNA. Try
+      changing the duplexer gain and noise figure to -2 dB and 2 dB
+      rspectively.</li>
+      <li>The LNA is a <i>critical</i> block. Try chainging its gain
+      and noise figure.</li>
+      <li>The total noise figure is <b>far</b> less sensitive to the
+      noise figure of blocks that follow the LNA. Try changing the
+      noise figure of the ETC block.</li>
+    </ul>
+ 
+  </div>
+
+  <div class="clear"></div>
+
+  <hr>
+
+  <h3>Friis formula</h3>
+
+  <div class="left_col">
+    <div data-file="irnf.coffee"></div>
+  </div>    
+
+  <div class="right_col">
+    <div data-eval="irnf.coffee"></div>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="clear"></div>
+
+  <div class="foot">
+    <hr>
+    <span class="puzlet-link">Powered by <a href="http://puzlet.org/">Puzlet</a>.</span>
+    <span class="org-link"><a href="../">toyproblem</a></span>
+  </div>  
+
+</div>
